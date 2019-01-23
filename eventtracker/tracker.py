@@ -31,10 +31,11 @@ else :
     ticketRequired = "false";
     ticketNumber = "not_required";
 
-# DUMMY TEST
-appCmdbId = "DUMMY_CMDB_ID";
+# CMDB ID - Sample code
+appCmdbId = "DEFAULT_CMDB_ID"; # Dummy default
 # appCi = repository.read("Applications/" + appName);
-# appCmdbId = appCi.getAttribute("Put_Cmdb_Property_Here");
+# if (appCi.getProperty("appId")): 
+#     appCmdbId = str(appCi.getProperty("appId"));
 
 # TImestamp
 timeStamp = str(datetime.datetime.now());
@@ -42,7 +43,7 @@ timeStamp = str(datetime.datetime.now());
 # Hardcoded test URL - replace with your data bucket e.g. Splunk or Google Docs
 url = 'http://127.0.0.1:8080/example?';
 
-dataJSON = "{'appName': '" + appName + "', 'appCMDB': '" + appCmdbId + "', 'version': '" + appVersion + \
+dataJSON = "{'appName': '" + appName + "', 'appCmdbId': '" + appCmdbId + "', 'version': '" + appVersion + \
     "', 'ticket': '" + ticketNumber + "', 'start_time': '" + startTime + "', 'end_time': '" + timeStamp + "'}";
 
 dataCSV = appName + "," + appCmdbId + "," + appVersion + \
