@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+    Note: If you modify this file and automatic reloading is disabled in `planner.conf`, you must restart the XL Deploy server.
+-->
+<rules xmlns="http://www.xebialabs.com/xl-deploy/xl-rules">
+    <!-- Add your <rule ...> and <disable-rule ...> elements here -->
+
+    <rule name="XldEventTracker" scope="pre-plan">
+        <steps>
+            <jython>
+                <order>35</order>
+                <description>XLD Event Tracker: Get Start Timestamp</description>
+                <script>eventtracker/tracker_start.py</script>
+            </jython>
+        </steps>
+    </rule>
+
+    <rule name="XldEventTracker" scope="post-plan">
+        <steps>
+            <jython>
+                <order>95</order>
+                <description>XLD Event Tracker: Log Data</description>
+                <script>eventtracker/tracker.py</script>
+            </jython>
+        </steps>
+    </rule>
+
+</rules>
