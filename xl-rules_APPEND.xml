@@ -8,15 +8,10 @@
     <rule name="XldEventTracker" scope="pre-plan">
         <steps>
             <jython>
-                <order>35</order>
-                <description>XLD Event Tracker: Get Start Timestamp</description>
-                <script>eventtracker/tracker_start.py</script>
+                  <order>5</order>
+                  <description>XLD Event Tracker: Get Start Timestamp</description>
+                  <script>eventtracker/tracker_start.py</script>
             </jython>
-        </steps>
-    </rule>
-
-    <rule name="XldEventTracker" scope="post-plan">
-        <steps>
             <jython>
                 <order>95</order>
                 <description>XLD Event Tracker: Log Data</description>
