@@ -1,13 +1,13 @@
 
 import json;
 import datetime;
-import requests;
-import requests.utils;
+# import requests;
+# import requests.utils;
 # Fixes some issues with TLS
 import os;
 
 # This file is required for Requests.py TLS connections
-os.environ['REQUESTS_CA_BUNDLE'] = 'ca.pem';
+# os.environ['REQUESTS_CA_BUNDLE'] = 'ca.pem';
 
 task = context.getTask();
 repository = context.getRepository();
@@ -15,6 +15,7 @@ repository = context.getRepository();
 appName = str(task.getMetadata()['application']);
 appVersion = str(task.getMetadata()['version']);
 envName = str(task.getMetadata()['environment']);
+taskType = str(task.getMetadata()['taskType']);
 userName = str(task.getUsername());
 
 deploymentPackage = repository.read("Applications/" + appName + "/" + appVersion);
@@ -48,7 +49,7 @@ dataJSON = "{'appName': '" + appName + "', 'appCmdbId': '" + appCmdbId + "', 've
     "', 'ticket': '" + ticketNumber + "', 'start_time': '" + startTime + "', 'end_time': '" + timeStamp + "'}";
 
 dataCSV = appName + "," + appCmdbId + "," + appVersion + "," + envName + "," + \
-    userName + "," + ticketNumber + "," + startTime + "," + timeStamp + "\r\n";
+    userName + "," + taskType + "," + ticketNumber + "," + startTime + "," + timeStamp + "\r\n";
 
 print "XLDEventTracker: message - " + dataJSON;
 

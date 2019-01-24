@@ -5,15 +5,20 @@
 <rules xmlns="http://www.xebialabs.com/xl-deploy/xl-rules">
     <!-- Add your <rule ...> and <disable-rule ...> elements here -->
 
-    <rule name="XldEventTracker" scope="pre-plan">
+    <rule name="XldEventTrackerPrePlan" scope="pre-plan">
         <steps>
             <jython>
                   <order>5</order>
                   <description>XLD Event Tracker: Get Start Timestamp</description>
                   <script>eventtracker/tracker_start.py</script>
             </jython>
+        </steps>
+    </rule>
+    
+    <rule name="XldEventTrackerPostPlan" scope="post-plan">
+        <steps>
             <jython>
-                <order>95</order>
+                <order>90</order>
                 <description>XLD Event Tracker: Log Data</description>
                 <script>eventtracker/tracker.py</script>
             </jython>
